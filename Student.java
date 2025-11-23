@@ -11,7 +11,7 @@ public class Student extends Person {
     @Override
     void showDetails(){
         super.showDetails();
-        System.out.println("Course: " + Course);
+        System.out.println("Course:\t" + Course);
 
     }
 

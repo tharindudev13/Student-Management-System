@@ -10,7 +10,7 @@ public class Staff extends Person {
     @Override
     void showDetails(){ 
         super.showDetails();
-        System.out.println("Position: " + Position);
+        System.out.println("Position:\t" + Position);
     }
 
     @Override
