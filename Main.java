@@ -11,7 +11,14 @@ public class Main {
     static int teacherCount = 0;       
     static int staffCount = 0;
 
-    static void viewPersonDetails(String id,String type){ 
+    static Scanner scanner = new Scanner(System.in);
+
+
+    static void viewPersonDetails(String type){ 
+
+        String id;
+        System.out.print("Enter Student ID to view: ");
+        id = scanner.next();
 
         boolean found = false;
         int Count;
@@ -107,6 +114,36 @@ public class Main {
                 System.out.println("6. Back to Main Menu\n");
 
     }
+
+    static void delt(String type){
+        String deleteId;
+        int Count;
+        System.out.print("Enter"+ type +"ID to delete: ");   
+        Person arr[] = new Person[100];
+
+        if (type.equals("Student")) {
+            Count = studentCount;
+            arr = students.clone();
+                        
+        }else if (type.equals("Teacher")) {
+            Count = teacherCount;
+            arr = teachers.clone();
+
+        } else {
+            Count = staffCount;    
+            arr = staffs.clone();
+
+        }
+
+        deleteId = scanner.next();
+        for (int i = 0; i < Count; i++) {
+            if (arr[i].Id.equals(deleteId)) {
+                arr[i].deletePerson(deleteId,type);
+                break;
+            }
+        }   
+
+    }
     public static void main(String[] args) {
 
         System.out.println("\t___________________________________________\n");
@@ -114,7 +151,6 @@ public class Main {
 	    System.out.println("\t___________________________________________\n");
 
 
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
 
@@ -141,22 +177,11 @@ public class Main {
                         break;
                     case 2:
                         //View Student  
-                        String viewId;
-                        System.out.print("Enter Student ID to view: ");
-                        viewId = scanner.next();
-                        viewPersonDetails(viewId, "Student");
+                        viewPersonDetails("Student");
                         break;
                     case 3: 
                         //Update Student
-                        String updateId;
-                        System.out.print("Enter Student ID to update: ");
-                        updateId = scanner.next();
-                        for (int i = 0; i < studentCount; i++) {
-                            if (students[i].Id.equals(updateId)) {
-                                students[i].updateStudent(updateId);
-                                break;
-                            }
-                        }
+                        delt("Student");
                         break;          
                     case 4:
                         //Delete Student 
@@ -181,7 +206,7 @@ public class Main {
                         System.out.println("Invalid Choice..Try again!\n");
                         break;
                 }
-         }else if(choice == 2){
+        }else if(choice == 2){
             //Teacher Section
             selectOpt("Teacher");
 
@@ -200,10 +225,7 @@ public class Main {
                         break;
                     case 2:
                         //View teacher  
-                        String viewId;
-                        System.out.print("Enter Teacher ID to view: ");
-                        viewId = scanner.next();
-                        viewPersonDetails(viewId, "Teacher");
+                        viewPersonDetails( "Teacher");
                         break;
                     case 3: 
                         //Update teacher
@@ -219,15 +241,7 @@ public class Main {
                         break;          
                     case 4:
                         //Delete teacher
-                        String deleteId;
-                        System.out.print("Enter Teacher ID to delete: ");   
-                        deleteId = scanner.next();
-                        for (int i = 0; i < teacherCount; i++) {
-                            if (teachers[i].Id.equals(deleteId)) {
-                                teachers[i].deletePerson(deleteId,"Teacher");
-                                break;
-                            }
-                        }   
+                        delt("Teacher");
                         break;
                     case 5:
                         //View All Teachers
