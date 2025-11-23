@@ -182,19 +182,19 @@ public class Main {
                         break;
                     case 3: 
                         //Update Student
-                        delt("Student");
-                        break;          
-                    case 4:
-                        //Delete Student 
-                        String deleteId;
-                        System.out.print("Enter Student ID to delete: ");   
-                        deleteId = scanner.next();
+                        String updateId;
+                        System.out.print("Enter Student ID to update: ");
+                        updateId = scanner.next();
                         for (int i = 0; i < studentCount; i++) {
-                            if (students[i].Id.equals(deleteId)) {
-                                students[i].deletePerson(deleteId,"Student");
+                            if (students[i].Id.equals(updateId)) {
+                                students[i].updateStudent(updateId);
                                 break;
                             }
-                        }   
+                        }
+                        break;            
+                    case 4:
+                        //Delete Student 
+                        delt("Student");
                         break;
                     case 5:
                         //View All Students
