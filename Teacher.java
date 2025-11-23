@@ -1,21 +1,28 @@
 
 public class Teacher extends Person{
-    String[] Subjects;
+    String subject;
 
 
-    public Teacher(String name, int age, String Id, String Email, String[] Subjects) {
+    public Teacher(String name, int age, String Id, String Email, String subject) {
         super(name, age, Id, Email);
-        this.Subjects = Subjects;
+        this.subject = subject;
     }
     @Override
     void showDetails(){
         super.showDetails();
-        System.out.print("Subjects: ");
-        for (String subject : Subjects) {
-            System.out.print(subject + " ");
-        }
+        System.out.print("Subjects: " + subject);
+        
+        
         System.out.println();
 
+
+    }
+
+    @Override
+    void show(){
+        super.show();
+        System.out.print(subject+"\t"); 
+        System.out.println();
 
     }
 
@@ -33,17 +40,11 @@ public class Teacher extends Person{
         System.out.print("Email: ");
         String Email = scanner.nextLine();
 
-        System.out.print("Number of Subjects: ");
-        int numSubjects = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        System.out.print("Subject: ");
+        String subject = scanner.nextLine();
 
-        String[] Subjects = new String[numSubjects];
-        for (int i = 0; i < numSubjects; i++) {
-            System.out.print("Subject " + (i + 1) + ": ");
-            Subjects[i] = scanner.nextLine();
-        }
-
-        Teacher teacher = new Teacher(name, age, Id, Email, Subjects);
+        
+        Teacher teacher = new Teacher(name, age, Id, Email, subject);
 
         return teacher;
 

@@ -15,6 +15,13 @@ public class Student extends Person {
 
     }
 
+    @Override
+    void show(){
+        super.show();
+        System.out.print(Course+"\t");   
+        System.out.println();
+
+    }
 
     static Person addPerson(int count){
 

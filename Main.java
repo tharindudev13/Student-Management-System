@@ -7,21 +7,28 @@ public class Main {
     static Teacher[] teachers = new Teacher[100];
     static Staff[] staffs = new Staff[100];
 
-        
-
     static int studentCount = 0;
     static int teacherCount = 0;       
     static int staffCount = 0;
+
     static void viewPersonDetails(String id,String type){ 
 
         boolean found = false;
         int Count;
+        Person arr[] = new Person[100];
+        
         if (type.equals("Student")) {
-            Count = studentCount;           
+            Count = studentCount;
+            arr = students.clone();
+                        
         }else if (type.equals("Teacher")) {
-            Count = teacherCount;           
+            Count = teacherCount;
+            arr = teachers.clone();
+
         } else {
-            Count = staffCount;           
+            Count = staffCount;    
+            arr = staffs.clone();
+
         }
 
         System.out.println("\n"+type+" Details");
@@ -30,9 +37,9 @@ public class Main {
         
 
         for (int i = 0; i < Count; i++) {
-            if (students[i].Id.equals(id) && !students[i].isDeleted) {
+            if (arr[i].Id.equals(id) && !arr[i].isDeleted) {
                 
-                students[i].showDetails();
+                arr[i].showDetails();
                 found = true;
                 break;
             }
@@ -46,6 +53,36 @@ public class Main {
     
     }
     
+    static void viewAll(String type){
+        int Count;
+        Person arr[] = new Person[100];
+        System.out.println("\n"+type+" Details");
+        System.out.println("---------------------\n");
+        
+
+        if (type.equals("Student")) {
+            Count = studentCount; 
+            arr = students.clone();
+            System.out.println("StId\tName\t\t\tAge\tCourse");          
+        }else if (type.equals("Teacher")) {
+            Count = teacherCount;
+            arr = teachers.clone();
+            System.out.println("TcId\tName\t\tAge\tSubject");           
+        } else {
+            arr = staffs.clone();
+            Count = staffCount;           
+            System.out.println("EId\tName\t\tRole");
+        }
+
+        for (int i = 0; i < Count; i++) {
+            if(!arr[i].isDeleted){
+                arr[i].show();
+            }
+            
+            
+        }
+
+    }
 
     public static void main(String[] args) {
 
@@ -112,19 +149,20 @@ public class Main {
                     deleteId = scanner.next();
                     for (int i = 0; i < studentCount; i++) {
                         if (students[i].Id.equals(deleteId)) {
-                            students[i].deletePerson(deleteId);
+                            students[i].deletePerson(deleteId,"Student");
                             break;
                         }
                     }   
                     break;
                 case 5:
                     //View All Students
+                    viewAll("Student");
+                    System.out.println();
                     break; 
                 case 6:
-                    
                     break;
-                          
                 default:
+                    System.out.println("Invalid Choice..Try again!");
                     break;
             }
         }else if(choice == 2){

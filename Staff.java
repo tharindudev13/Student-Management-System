@@ -13,6 +13,14 @@ public class Staff extends Person {
         System.out.println("Position: " + Position);
     }
 
+    @Override
+    void show(){
+        super.show();
+        System.out.print(Position+"\t");   
+        System.out.println();
+
+    }
+
     static Person addPerson(int count){
 
         System.out.print("Name: ");

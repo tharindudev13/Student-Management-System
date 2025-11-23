@@ -13,8 +13,8 @@ public class Person {
     public Person(String name, int age, String Id, String Email) {
         this.name = name;
         this.age = age;
-        this.Id = Id;
         this.Email = Email;
+        this.Id = Id;
     }
 
     void showDetails(){
@@ -23,14 +23,19 @@ public class Person {
         System.out.println("ID: " + Id);
     }
 
-    void deletePerson(String id){
+    void deletePerson(String id,String type){
         if (this.Id.equals(id)) {
-            System.out.println("Person with ID " + id + " has been deleted.");
+            System.out.println(type + " with ID " + id + " has been deleted.\n");
             this.isDeleted = true;
         } else {
-            System.out.println("Person ID not found.");
+            System.out.println(type + " ID not found.\n");
         }
 
+    }
+
+    void show(){
+        System.out.print(Id+"\t"+ name + "\t" + age + "\t"); 
+        
     }
 
 
