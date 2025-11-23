@@ -78,7 +78,7 @@ public class Main {
         } else {
             arr = staffs.clone();
             Count = staffCount;           
-            System.out.println("EId\tName\t\tRole");
+            System.out.println("EId\tName\t\tAge\tRole");
         }
 
         for (int i = 0; i < Count; i++) {
@@ -256,7 +256,7 @@ public class Main {
                 }
         }else if(choice == 3){
             //Staff Section
-            selectOpt("Staff");
+            selectOpt("Employee");
 
             System.out.print("Option: ");
             int staffChoice = scanner.nextInt();
