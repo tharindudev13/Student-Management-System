@@ -1,0 +1,151 @@
+import java.util.Scanner;
+
+
+
+public class Main {
+    static Student[] students = new Student[100];
+    static Teacher[] teachers = new Teacher[100];
+    static Staff[] staffs = new Staff[100];
+
+        
+
+    static int studentCount = 0;
+    static int teacherCount = 0;       
+    static int staffCount = 0;
+    static void viewPersonDetails(String id,String type){ 
+
+        boolean found = false;
+        int Count;
+        if (type.equals("Student")) {
+            Count = studentCount;           
+        }else if (type.equals("Teacher")) {
+            Count = teacherCount;           
+        } else {
+            Count = staffCount;           
+        }
+
+        System.out.println("\n"+type+" Details");
+        System.out.println("---------------------\n");
+
+        
+
+        for (int i = 0; i < Count; i++) {
+            if (students[i].Id.equals(id) && !students[i].isDeleted) {
+                
+                students[i].showDetails();
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println(type + " not found.");
+        }
+
+        System.out.println("---------------------\n");
+        
+    
+    }
+    
+
+    public static void main(String[] args) {
+
+        System.out.println("\t___________________________________________\n");
+	    System.out.println("\t-------- STUDENT MANAGEMENT SYSTEM --------");
+	    System.out.println("\t___________________________________________\n");
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+
+            int choice=0;
+            System.out.println("Select a section\n1. Student\n2. Teacher\n3. Staff\n4. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            if(choice == 1){
+            System.out.println("\nSelect a option:");
+            System.out.println("1. Add Student");
+            if(studentCount>0){
+                System.out.println("2. View Student");
+                System.out.println("3. Update Student");  
+                System.out.println("4. Delete Student");
+                System.out.println("5. View All Students");
+            }
+            System.out.println("6. Back to Main Menu");
+            System.out.print("Option: ");
+            int studentChoice = scanner.nextInt();
+            System.out.println("");
+
+            switch (studentChoice) {
+                case 1:
+                    //Add Student   
+                    Student newStudent = (Student) Student.addPerson(studentCount);
+                    students[studentCount] = newStudent;
+                    studentCount++;
+                    System.out.println("\nStudent added successfully!\n");
+
+                    break;
+                case 2:
+                    //View Student  
+                    String viewId;
+                    System.out.print("Enter Student ID to view: ");
+                    viewId = scanner.next();
+                    viewPersonDetails(viewId, "Student");
+                    break;
+                case 3: 
+                    //Update Student
+                    String updateId;
+                    System.out.print("Enter Student ID to update: ");
+                    updateId = scanner.next();
+                    for (int i = 0; i < studentCount; i++) {
+                        if (students[i].Id.equals(updateId)) {
+                            students[i].updateStudent(updateId);
+                            break;
+                        }
+                    }
+                    break;          
+                case 4:
+                    //Delete Student 
+                    String deleteId;
+                    System.out.print("Enter Student ID to delete: ");   
+                    deleteId = scanner.next();
+                    for (int i = 0; i < studentCount; i++) {
+                        if (students[i].Id.equals(deleteId)) {
+                            students[i].deletePerson(deleteId);
+                            break;
+                        }
+                    }   
+                    break;
+                case 5:
+                    //View All Students
+                    break; 
+                case 6:
+                    
+                    break;
+                          
+                default:
+                    break;
+            }
+        }else if(choice == 2){
+            //Teacher Section
+
+    }else if(choice == 3){
+        //Staff Section
+    }else if(choice == 4){
+        System.out.println("Exiting the program.");
+        break;
+    }else{
+        System.out.println("Invalid choice. Please try again.");
+    }
+
+
+    
+}
+scanner.close();
+    
+
+    }
+    
+
+}
