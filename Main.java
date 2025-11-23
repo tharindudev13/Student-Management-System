@@ -64,7 +64,7 @@ public class Main {
         int Count;
         Person arr[] = new Person[100];
         System.out.println("\n"+type+" Details");
-        System.out.println("----------------------------------\n");
+        System.out.println("------------------------------------------\n");
         
 
         if (type.equals("Student")) {
@@ -88,7 +88,7 @@ public class Main {
             
             
         }
-        System.out.println("----------------------------------\n");
+        System.out.println("\n------------------------------------------\n");
 
     }
 
