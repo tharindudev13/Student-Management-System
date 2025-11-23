@@ -254,13 +254,54 @@ public class Main {
                         System.out.println("Invalid Choice..Try again!\n");
                         break;
                 }
-
-
-            
-
-
         }else if(choice == 3){
             //Staff Section
+            selectOpt("Staff");
+
+            System.out.print("Option: ");
+            int staffChoice = scanner.nextInt();
+            System.out.println("");
+
+            switch (staffChoice) {
+                    case 1:
+                        //Add an Employee  
+                        Staff newEmployee = (Staff) Staff.addPerson(staffCount);
+                        staffs[staffCount] = newEmployee;
+                        staffCount++;
+                        System.out.println("\nEmployee added successfully!\n");
+
+                        break;
+                    case 2:
+                        //View teacher  
+                        viewPersonDetails( "Staff");
+                        break;
+                    case 3: 
+                        //Update teacher
+                        String updateId;
+                        System.out.print("Enter Employee ID to update: ");
+                        updateId = scanner.next();
+                        for (int i = 0; i < staffCount; i++) {
+                            if (staffs[i].Id.equals(updateId)) {
+                                staffs[i].updateEmployee(updateId);
+                                break;
+                            }
+                        }
+                        break;          
+                    case 4:
+                        //Delete teacher
+                        delt("Staff");
+                        break;
+                    case 5:
+                        //View All Teachers
+                        viewAll("Staff");
+                        System.out.println();
+                        break; 
+                    case 6:
+                        break;
+                    default:
+                        System.out.println("Invalid Choice..Try again!\n");
+                        break;
+                }
         }else if(choice == 4){
             System.out.println("Exiting the program.");
             break;
