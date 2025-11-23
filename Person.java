@@ -18,9 +18,9 @@ public class Person {
     }
 
     void showDetails(){
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("ID: " + Id);
+        System.out.println("Name:\t" + name);
+        System.out.println("Age:\t" + age);
+        System.out.println("ID:\t" + Id);
     }
 
     void deletePerson(String id,String type){

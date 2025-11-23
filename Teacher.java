@@ -30,7 +30,7 @@ public class Teacher extends Person{
     @Override
     void showDetails(){
         super.showDetails();
-        System.out.print("Subjects: " + subject);
+        System.out.print("Subjects:\t" + subject);
         
         
         System.out.println();
