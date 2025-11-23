@@ -61,8 +61,8 @@ public class Staff extends Person {
     void updateEmployee(String id){
         if (this.Id.equals(id)) {
 
-            System.out.print("Enter new Subject: ");
-            this.Position = scanner.nextLine();
+            System.out.print("Enter new Position: ");
+            this.Position = scanner.next();
 
             System.out.print("Enter Worked Days: ");
             this.workDays = scanner.nextInt();
