@@ -56,9 +56,9 @@ public class Student extends Person {
             System.out.print("Enter new Course: ");
             this.Course = scanner.nextLine();
 
-            System.out.println("Student details updated successfully.");
+            System.out.println("\nStudent details updated successfully.");
         } else {
-            System.out.println("Student ID not found.");
+            System.out.println("\nStudent ID not found.\n");
         }
 
     }
