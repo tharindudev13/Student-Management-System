@@ -49,9 +49,9 @@ public class Teacher extends Person{
 
             this.salary = Salary();
 
-            System.out.println("Teacher details updated successfully.");
+            System.out.println("\nTeacher details updated successfully.\n");
         } else {
-            System.out.println("Teacher ID not found.");
+            System.out.println("\nTeacher ID not found.\n");
         }
 
     }

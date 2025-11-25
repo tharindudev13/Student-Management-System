@@ -13,6 +13,19 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
+    public static void clearConsole(){
+        try {
+             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("\t___________________________________________\n");
+	    System.out.println("\t-------- STUDENT MANAGEMENT SYSTEM --------");
+	    System.out.println("\t___________________________________________\n");
+    }
+
+
 
     static void viewPersonDetails(String type){ 
 
@@ -160,12 +173,16 @@ public class Main {
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
+            clearConsole();
+
             if(choice == 1){
                 selectOpt("Student");
 
                 System.out.print("Option: ");
                 int studentChoice = scanner.nextInt();
                 System.out.println("");
+
+                clearConsole();
 
                 switch (studentChoice) {
                     case 1:
@@ -174,6 +191,7 @@ public class Main {
                         students[studentCount] = newStudent;
                         studentCount++;
                         System.out.println("\nStudent added successfully!\n");
+                        
 
                         break;
                     case 2:
@@ -304,7 +322,17 @@ public class Main {
                         break;
                 }
         }else if(choice == 4){
-            System.out.println("Exiting the program.");
+            String text = "\nExiting the program......";
+            for (char c : text.toCharArray()) {
+                System.out.print(c);
+                try {
+                    Thread.sleep(100); // Adjust the delay time (in milliseconds) as needed
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.exit(0);
+
             break;
         }else{
             System.out.println("Invalid choice. Please try again.");
