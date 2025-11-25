@@ -322,7 +322,17 @@ public class Main {
                         break;
                 }
         }else if(choice == 4){
-            System.out.println("Exiting the program.");
+            String text = "\nExiting the program......";
+            for (char c : text.toCharArray()) {
+                System.out.print(c);
+                try {
+                    Thread.sleep(100); // Adjust the delay time (in milliseconds) as needed
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.exit(0);
+
             break;
         }else{
             System.out.println("Invalid choice. Please try again.");
